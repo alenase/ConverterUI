@@ -16,7 +16,6 @@ function TableResult() {
     <TableRow first="1" second="1" />
     <TableRow first="1" second="1" />
     <TableRow first="1" second="1" />
-    <TableRow first="1" second="1" />
     </tbody>
 </Table>
     );

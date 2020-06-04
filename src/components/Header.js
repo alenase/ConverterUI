@@ -7,13 +7,14 @@ function Header() {
       <Row className="Div-Absolute-Header">
 
         <Col md={{ span: 3, offset: 3 }}> 
-          <Button>Currency</Button>
+       
+          <Button href="/" >Currency</Button>
         </Col>
 
         <Col md={{ span: 0, offset: 0 }}>  
-          <Button>Aboout API</Button>
+          <Button href="/about-api">Aboout API</Button>
           </Col>
-          
+
       </Row>
     );
   }

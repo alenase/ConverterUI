@@ -9,6 +9,7 @@ function FormCurrency() {
               <Col md={{ span: 3, offset: 3 }}> 
               <Button>Купить</Button>
               </Col>
+              
               <Col md={{ span: 0, offset: 0 }}>  
               <Button>Продать</Button>
               </Col>
