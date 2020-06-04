@@ -3,13 +3,19 @@ import '../App.css';
 import FormCurrency from './FormCurrency';
 import TableResult from './TableResult';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Home() {
     return (
       <Container id="Body">
 
         <FormCurrency/>
-        <TableResult/>
+        <Row id="Row">
+          <Col  md={{ span: 5, offset: 3 }} sm={{ span: 0, offset: 3 }}>
+          <TableResult/>
+          </Col>
+        </Row>
       </Container>
     );
   }

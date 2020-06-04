@@ -5,11 +5,11 @@ import TableRow from './TableRow';
 
 function TableResult() {
     return (
-<Table responsive>
+<Table responsive >
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table heading</th>
+      <th>Валюта</th>
+      <th>Стоимость</th>
     </tr>
   </thead>
   <tbody>
