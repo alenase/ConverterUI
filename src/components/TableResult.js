@@ -4,21 +4,21 @@ import Table from 'react-bootstrap/Table';
 import TableRow from './TableRow';
 
 function TableResult() {
-    return (
-<Table responsive >
-  <thead>
-    <tr>
-      <th>Валюта</th>
-      <th>Стоимость</th>
-    </tr>
-  </thead>
-  <tbody>
-    <TableRow first="1" second="1" />
-    <TableRow first="1" second="1" />
-    <TableRow first="1" second="1" />
-    </tbody>
-</Table>
-    );
-  }
-  
-  export default TableResult;
+  return (
+    <Table responsive >
+      <thead>
+        <tr>
+          <th>Валюта</th>
+          <th>Стоимость</th>
+        </tr>
+      </thead>
+      <tbody>
+        <TableRow first="1" second="1" />
+        <TableRow first="1" second="1" />
+        <TableRow first="1" second="1" />
+      </tbody>
+    </Table>
+  );
+}
+
+export default TableResult;
