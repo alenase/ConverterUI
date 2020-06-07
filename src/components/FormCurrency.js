@@ -2,6 +2,22 @@ import React from 'react';
 import '../App.css';
 import Dialog, { Button, Col, Container, Form, Row, Dropdown } from 'react-bootstrap'
 
+
+
+function GenerateTableRows(props) {
+  const currencyList = props.data.map((d) =>
+    <Dropdown.Item eventKey={d.id}>
+      {d.currency}
+    </Dropdown.Item>
+  );
+  return (
+    <Dropdown.Menu>
+      {currencyList}
+    </Dropdown.Menu>
+  );
+
+}
+
 class FormCurrency extends React.Component {
   constructor(props) {
     super(props);
@@ -50,18 +66,14 @@ class FormCurrency extends React.Component {
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 {this.state.dropdownName}
               </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">USD</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">EURO</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">RUB</Dropdown.Item>
-                <Dropdown.Item href="#/action-4">UAH</Dropdown.Item>
-              </Dropdown.Menu>
+              <GenerateTableRows data={this.props.data} />
             </Dropdown>
           </Col>
 
 
         </Row>
+
+
       </Form>
 
     );

@@ -3,7 +3,19 @@ import '../App.css';
 import Table from 'react-bootstrap/Table';
 import TableRow from './TableRow';
 
-function TableResult() {
+function GenerateTableRows(props) {
+  const tableRows = props.data.map((d) =>
+    <TableRow first={d.saleRateNB} second={d.currency} />
+  );
+  return (
+    <tbody>
+      {tableRows}
+    </tbody>
+  );
+
+}
+
+function TableResult(props) {
   return (
     <Table responsive >
       <thead>
@@ -12,11 +24,7 @@ function TableResult() {
           <th>Стоимость</th>
         </tr>
       </thead>
-      <tbody>
-        <TableRow first="1" second="1" />
-        <TableRow first="1" second="1" />
-        <TableRow first="1" second="1" />
-      </tbody>
+      <GenerateTableRows data={props.data} />
     </Table>
   );
 }
