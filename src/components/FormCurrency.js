@@ -73,7 +73,7 @@ class FormCurrency extends React.Component {
 
         </Row>
 
-       
+
       </Form>
 
     );

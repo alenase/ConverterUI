@@ -3,15 +3,15 @@ import '../App.css';
 import Table from 'react-bootstrap/Table';
 import TableRow from './TableRow';
 
-function GenerateTableRows(props){
+function GenerateTableRows(props) {
   const tableRows = props.data.map((d) =>
-  <TableRow first={d.saleRateNB} second={d.currency}/>
-);
-return (
-  <tbody>
-    {tableRows}
+    <TableRow first={d.saleRateNB} second={d.currency} />
+  );
+  return (
+    <tbody>
+      {tableRows}
     </tbody>
-);
+  );
 
 }
 
@@ -24,7 +24,7 @@ function TableResult(props) {
           <th>Стоимость</th>
         </tr>
       </thead>
-      <GenerateTableRows data={props.data} /> 
+      <GenerateTableRows data={props.data} />
     </Table>
   );
 }
