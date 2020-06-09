@@ -15,25 +15,28 @@ const data = [
   { id: 3, currency: "GBP", saleRateNB: 23.6324910, purchaseRateNB: 23.6324910 },
   { id: 4, currency: "PLZ", saleRateNB: 4.4922010, purchaseRateNB: 4.4922010 },
   { id: 5, currency: "RUB", saleRateNB: 0.3052700, purchaseRateNB: 0.3052700 },
-  { id: 6, currency: "SEK", saleRateNB: 2.0283750, purchaseRateNB: 2.0283750 },
   { id: 7, currency: "UAH", saleRateNB: 1.0000000, purchaseRateNB: 1.0000000 },
   { id: 8, currency: "USD", saleRateNB: 15.0564130, purchaseRateNB: 15.0564130 },
-  { id: 9, currency: "XAU", saleRateNB: 17747.7470000, purchaseRateNB: 17747.7470000 },
-  { id: 10, currency: "CAD", saleRateNB: 13.2107400, purchaseRateNB: 13.2107400 }
+  { id: 9, currency: "CZK", saleRateNB: 15.0564130, purchaseRateNB: 15.0564130 }
 
 ];
 
 const infoMap = new Map([
-  ['EUR', 'евро'],
-  ['RUB', 'российский рубль'],
-  ['USD', 'доллар США']
+  ['EUR', 'Евро'],
+  ['RUB', 'Российский рубль'],
+  ['USD', 'Доллар США'],
+  ['CHF', 'Швейцарский франк'],
+  ['CZK', 'Чешская крона'],
+  ['GBP', 'Фунт стерлингов'],
+  ['PLZ', 'Польский злотый'],
+  ['UAH', 'Гривна']
 ]);
 
 const pictureLinks = [
-  { id: 1, link: "https://www.geont.ru/assets/cache/images/images/sliders/costa_rica/costa_rica10-800x300-d02.jpg" },
-  { id: 2, link: "https://iveron.ru/wp-content/uploads/2019/03/2-800x300.jpg" },
-  { id: 3, link: "https://lh3.googleusercontent.com/proxy/glnBjS5LI3qxYaokA_d9tvrPjmfcW3FY39Qmt55l07z6Yz86Mgaqnh61_6LBMElDREIpsMdwEBlPJAvE0RioHf5Ylms_isG4dHW1OQvyLFY6cJYGW_mUbZ8mANX_onXK-1gtawijjL4" },
-  { id: 4, link: "https://www.geont.ru/assets/cache/images/images/sliders/costa_rica/costa_rica9-800x300-c71.jpg" }
+  { id: 1, link: "https://picsum.photos/800/300" },
+  { id: 2, link: "https://picsum.photos/801/301" },
+  { id: 3, link: "https://picsum.photos/802/302" },
+  { id: 4, link: "https://picsum.photos/803/303" }
 ];
 
 

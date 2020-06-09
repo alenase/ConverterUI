@@ -7,7 +7,7 @@ import Slider from './Slider';
 
 function AboutAPI(props) {
   return (
-    <Container id="Body">
+    <Container id="body">
       <h1>Privat Api</h1>
       <div>
         <h4>Наш сайт позволяет производить конвертацию между следующими валютами</h4>
