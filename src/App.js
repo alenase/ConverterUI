@@ -8,23 +8,22 @@ import Footer from "./components/Footer";
 const Home = lazy(() => import('./components/Home'));
 const AboutAPI = lazy(() => import('./components/AboutAPI'));
 
-
 const data = [
-  { id: 1, currency: "CHF", saleRateNB: 15.6389750, purchaseRateNB: 15.6389750 },
-  { id: 2, currency: "EUR", saleRateNB: 18.7949200, purchaseRateNB: 18.7949200 },
-  { id: 3, currency: "GBP", saleRateNB: 23.6324910, purchaseRateNB: 23.6324910 },
-  { id: 4, currency: "PLZ", saleRateNB: 4.4922010, purchaseRateNB: 4.4922010 },
-  { id: 5, currency: "RUB", saleRateNB: 0.3052700, purchaseRateNB: 0.3052700 },
-  { id: 6, currency: "SEK", saleRateNB: 2.0283750, purchaseRateNB: 2.0283750 },
-  { id: 7, currency: "UAH", saleRateNB: 1.0000000, purchaseRateNB: 1.0000000 },
-  { id: 8, currency: "USD", saleRateNB: 15.0564130, purchaseRateNB: 15.0564130 },
-  { id: 9, currency: "XAU", saleRateNB: 17747.7470000, purchaseRateNB: 17747.7470000 },
-  { id: 10, currency: "CAD", saleRateNB: 13.2107400, purchaseRateNB: 13.2107400 }
-
+  { id: 1, "currency": "CHF", "saleRateNB": 27.8308000, "purchaseRateNB": 27.8308000, "saleRate": 28.4500000, "purchaseRate": 26.5500000 },
+  { id: 2, "currency": "CZK", "saleRateNB": 1.1264000, "purchaseRateNB": 1.1264000, "saleRate": 1.1400000, "purchaseRate": 0.9500000 },
+  { id: 3, "currency": "EUR", "saleRateNB": 29.9975000, "purchaseRateNB": 29.9975000, "saleRate": 30.3100000, "purchaseRate": 29.5000000 },
+  { id: 4, "currency": "GBP", "saleRateNB": 33.4786000, "purchaseRateNB": 33.4786000, "saleRate": 34.2000000, "purchaseRate": 32.2000000 },
+  { id: 5, "currency": "PLZ", "saleRateNB": 6.7665000, "purchaseRateNB": 6.7665000, "saleRate": 6.8500000, "purchaseRate": 6.050000 },
+  { id: 6, "currency": "RUB", "saleRateNB": 0.3855700, "purchaseRateNB": 0.3855700, "saleRate": 0.3900000, "purchaseRate": 0.3600000 },
+  { id: 7, "currency": "USD", "saleRateNB": 26.6953000, "purchaseRateNB": 26.6953000, "saleRate": 26.8500000, "purchaseRate": 26.4500000 }
 ];
 
 const infoMap = new Map([
   ['EUR', 'евро'],
+  ['CHF', 'швейцарский франк'],
+  ['CZK', 'чешская крона'],
+  ['GBP', 'британский фунт'],
+  ['PLZ', 'польский злотый'],
   ['RUB', 'российский рубль'],
   ['USD', 'доллар США']
 ]);
@@ -32,7 +31,7 @@ const infoMap = new Map([
 const pictureLinks = [
   { id: 1, link: "https://www.geont.ru/assets/cache/images/images/sliders/costa_rica/costa_rica10-800x300-d02.jpg" },
   { id: 2, link: "https://iveron.ru/wp-content/uploads/2019/03/2-800x300.jpg" },
-  { id: 3, link: "https://lh3.googleusercontent.com/proxy/glnBjS5LI3qxYaokA_d9tvrPjmfcW3FY39Qmt55l07z6Yz86Mgaqnh61_6LBMElDREIpsMdwEBlPJAvE0RioHf5Ylms_isG4dHW1OQvyLFY6cJYGW_mUbZ8mANX_onXK-1gtawijjL4" },
+  { id: 3, link: "https://ladolcevita.com.ua/wp-content/uploads/2020/04/zamki-iz-Kharkova-800x300.jpg" },
   { id: 4, link: "https://www.geont.ru/assets/cache/images/images/sliders/costa_rica/costa_rica9-800x300-c71.jpg" }
 ];
 

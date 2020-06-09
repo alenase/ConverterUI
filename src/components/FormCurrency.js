@@ -41,7 +41,7 @@ class FormCurrency extends React.Component {
   render() {
     return (
       <Form>
-        <Row id="Row">
+        <Row id="row">
           <Col md={{ span: 3, offset: 3 }}>
             <Button variant={this.state.ifDisabledButton1} onClick={this.handleButton1Click}>Купить</Button>
           </Col>
@@ -51,8 +51,7 @@ class FormCurrency extends React.Component {
           </Col>
         </Row>
 
-
-        <Row id="Row">
+        <Row id="row">
           <Col md={{ span: 1, offset: 3 }}>
             <p>Сумма:</p>
           </Col>
@@ -70,12 +69,9 @@ class FormCurrency extends React.Component {
             </Dropdown>
           </Col>
 
-
         </Row>
 
-
       </Form>
-
     );
   }
 }
