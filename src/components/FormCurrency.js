@@ -1,12 +1,12 @@
 import React from 'react';
 import '../App.css';
-import Dialog, { Button, Col, Container, Form, Row, Dropdown } from 'react-bootstrap'
-
+import { Button, Col, Form, Row, Dropdown } from 'react-bootstrap'
 
 
 function GenerateTableRows(props) {
   const currencyList = props.data.map((d) =>
-    <Dropdown.Item eventKey={d.id}>
+    <Dropdown.Item key={d.currency} eventKey={d.currency}>
+
       {d.currency}
     </Dropdown.Item>
   );
@@ -18,66 +18,43 @@ function GenerateTableRows(props) {
 
 }
 
-class FormCurrency extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ifDisabledButton1: 'success',
-      ifDisabledButton2: 'secondary',
-      dropdownName: 'UAH',
-    }
-    this.handleButton1Click = this.handleButton1Click.bind(this);
-    this.handleButton2Click = this.handleButton2Click.bind(this);
-  }
+function FormCurrency(props) {
+  return (
+    <Form>
+      <Row id="row">
+        <Col md={{ span: 3, offset: 3 }}>
+          <Button variant={props.stateValues.ifDisabledButtonKupit} onClick={props.handleBuyCurrencyTrue}>Купить</Button>
+        </Col>
 
-  handleButton1Click() {
-    this.setState({ ifDisabledButton1: 'success', ifDisabledButton2: 'secondary', })
-  }
+        <Col md={{ span: 0, offset: 0 }}>
+          <Button variant={props.stateValues.ifDisabledButtonProdat} onClick={props.handleBuyCurrencyFalse}>Продать</Button>
+        </Col>
+      </Row>
 
-  handleButton2Click() {
-    this.setState({ ifDisabledButton1: 'secondary', ifDisabledButton2: 'success', })
-  }
+      <Row id="row">
+        <Col md={{ span: 1, offset: 3 }}>
+          <p>Сумма:</p>
+        </Col>
 
-  render() {
-    return (
-      <Form>
-        <Row id="Row">
-          <Col md={{ span: 3, offset: 3 }}>
-            <Button variant={this.state.ifDisabledButton1} onClick={this.handleButton1Click}>Купить</Button>
-          </Col>
+        <Col md={{ span: 2, offset: 0 }}>
+          <Form.Control value={props.stateValues.summ} name="summ" onChange={props.handleSummChange}></Form.Control>
+        </Col>
 
-          <Col md={{ span: 0, offset: 0 }}>
-            <Button variant={this.state.ifDisabledButton2} onClick={this.handleButton2Click}>Продать</Button>
-          </Col>
-        </Row>
+        <Col md={{ span: 1, offset: 0 }}>
+          <Dropdown onSelect={props.handleSelectedCurrencyChange}>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              {props.stateValues.selectedCurrency}
+            </Dropdown.Toggle>
+            <GenerateTableRows data={props.data} />
+          </Dropdown>
+        </Col>
 
+      </Row>
 
-        <Row id="Row">
-          <Col md={{ span: 1, offset: 3 }}>
-            <p>Сумма:</p>
-          </Col>
+    </Form>
 
-          <Col md={{ span: 2, offset: 0 }}>
-            <Form.Control value="number" name="summ"></Form.Control>
-          </Col>
-
-          <Col md={{ span: 1, offset: 0 }}>
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                {this.state.dropdownName}
-              </Dropdown.Toggle>
-              <GenerateTableRows data={this.props.data} />
-            </Dropdown>
-          </Col>
-
-
-        </Row>
-
-
-      </Form>
-
-    );
-  }
+  );
 }
+
 
 export default FormCurrency;

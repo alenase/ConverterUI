@@ -3,13 +3,13 @@ import '../App.css';
 
 
 function TableRow(props) {
-    return (
-      <tr>
+  return (
+    <tr>
       <td>{props.first}</td>
       <td>{props.second} </td>
 
     </tr>
-    );
-  }
-  
-  export default TableRow;
+  );
+}
+
+export default TableRow;
