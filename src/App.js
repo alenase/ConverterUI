@@ -50,46 +50,53 @@ class App extends React.Component {
     }
   }
 
-  // getData(date) {
-  //   let result;
-  //   axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date)
-  //     .then(res => {result = res.data.exchangeRate})
-  //     .catch(error => alert('Something went wrong ' + error));
-  //   return result;
-  // }
+  getData(date) {
+    let result;
+    axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date)
+      .then(res => {result = res.exchangeRate})
+      .catch(error => alert('Something went wrong ' + error));
+    return result;
+  }
 
-  // componentDidMount() {
-  //   const date = new Date();
-  //   let paramDate = `${date.getDate()}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
-  //   let responseData = this.getData(paramDate);
-  //   console.log(responseData);
-
-  //   // if (responseData == null) {
-  //   if (responseData === undefined) {
-  //     paramDate = `${date.getDate() - 1}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
-  //     console.log(paramDate);
-  //     responseData = this.getData(paramDate);
-  //     console.log(responseData);
-
-  //   }
-  //   responseData.shift();
-  //   const correctData = responseData.filter(item => item.saleRate != null || item.currency === 'UAH');
-  //   this.setState({ data: correctData });
+  // async getData(date) {
+  //   let response = await fetch('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date);
+  //   let responseData = await response.json();
+  //   console.log(responseData.exchangeRate);
+  //   return responseData.exchangeRate;
   // }
 
   componentDidMount() {
     const date = new Date();
-    const paramDate = `${date.getDate()}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
-    axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + paramDate)
-    // axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=09.06.2020')
-        .then(res => {
-          const responseData = res.data.exchangeRate;
-          responseData.shift();
-          const correctData = responseData.filter(item => item.saleRate != null || item.currency === 'UAH');
-          this.setState({data : correctData});
-        })
-        .catch(error => alert('Something went wrong ' + error));
+    let paramDate = `${date.getDate()}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
+    let responseData = this.getData(paramDate);
+    console.log(responseData);
+
+    // if (responseData == null) {
+    if (responseData === undefined) {
+      paramDate = `${date.getDate() - 1}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
+      console.log(paramDate);
+      responseData = this.getData(paramDate);
+      console.log(responseData);
+
+    }
+    responseData.shift();
+    const correctData = responseData.filter(item => item.saleRate != null || item.currency === 'UAH');
+    this.setState({ data: correctData });
   }
+
+  // componentDidMount() {
+  //   const date = new Date();
+  //   const paramDate = `${date.getDate()}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
+  //   axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + paramDate)
+  //   // axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=09.06.2020')
+  //       .then(res => {
+  //         const responseData = res.data.exchangeRate;
+  //         responseData.shift();
+  //         const correctData = responseData.filter(item => item.saleRate != null || item.currency === 'UAH');
+  //         this.setState({data : correctData});
+  //       })
+  //       .catch(error => alert('Something went wrong ' + error));
+  // }
 
   render() {
     return (
