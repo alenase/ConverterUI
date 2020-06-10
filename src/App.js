@@ -50,20 +50,21 @@ class App extends React.Component {
     }
   }
 
-  getData(date) {
-    let result;
-    axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date)
-      .then(res => {result = res.exchangeRate})
-      .catch(error => alert('Something went wrong ' + error));
-    return result;
-  }
-
-  // async getData(date) {
-  //   let response = await fetch('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date);
-  //   let responseData = await response.json();
-  //   console.log(responseData.exchangeRate);
-  //   return responseData.exchangeRate;
+  // with axios:
+  // getData(date) {
+  //   let result;
+  //   axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date)
+  //     .then(res => {result = res.data.exchangeRate})
+  //     .catch(error => alert('Something went wrong ' + error));
+  //   return result;
   // }
+
+  async getData(date) {
+    let response = await fetch('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date);
+    let responseData = await response.json();
+    console.log(responseData.exchangeRate);
+    return responseData.exchangeRate;
+  }
 
   componentDidMount() {
     const date = new Date();
