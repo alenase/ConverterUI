@@ -9,12 +9,12 @@ function Header() {
   return (
     <Row className="Div-Absolute-Header">
 
-      <Col md={{ span: 3, offset: 3 }} sm={{ span: 0, offset: 3 }}>
-        <Button href="/" variant="success">Currency</Button>
+      <Col md={{ span: 1, offset: 2 }} sm={{ span: 3, offset: 0 }}>
+        <Button size="lg" href="/" variant="success">Currency</Button>
       </Col>
 
-      <Col md={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 3 }}>
-        <Button href="/about-api" variant="success">About API</Button>
+      <Col md={{ span: 2, offset: 0 }} sm={{ span: 3, offset: 0 }}>
+        <Button size="lg" href="/about-api" variant="success">About API</Button>
       </Col>
 
     </Row>

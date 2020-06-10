@@ -2,11 +2,11 @@ import React from 'react';
 import '../App.css';
 
 function SocialNetwork() {
-    return (
-      <div >
+  return (
+    <div >
 
-      </div>
-    );
-  }
-  
-  export default SocialNetwork;
+    </div>
+  );
+}
+
+export default SocialNetwork;

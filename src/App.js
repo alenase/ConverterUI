@@ -1,22 +1,13 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const Home = lazy(() => import('./components/Home'));
 const AboutAPI = lazy(() => import('./components/AboutAPI'));
-
-const data = [
-  { id: 1, "currency": "CHF", "saleRateNB": 27.8308000, "purchaseRateNB": 27.8308000, "saleRate": 28.4500000, "purchaseRate": 26.5500000 },
-  { id: 2, "currency": "CZK", "saleRateNB": 1.1264000, "purchaseRateNB": 1.1264000, "saleRate": 1.1400000, "purchaseRate": 0.9500000 },
-  { id: 3, "currency": "EUR", "saleRateNB": 29.9975000, "purchaseRateNB": 29.9975000, "saleRate": 30.3100000, "purchaseRate": 29.5000000 },
-  { id: 4, "currency": "GBP", "saleRateNB": 33.4786000, "purchaseRateNB": 33.4786000, "saleRate": 34.2000000, "purchaseRate": 32.2000000 },
-  { id: 5, "currency": "PLZ", "saleRateNB": 6.7665000, "purchaseRateNB": 6.7665000, "saleRate": 6.8500000, "purchaseRate": 6.050000 },
-  { id: 6, "currency": "RUB", "saleRateNB": 0.3855700, "purchaseRateNB": 0.3855700, "saleRate": 0.3900000, "purchaseRate": 0.3600000 },
-  { id: 7, "currency": "USD", "saleRateNB": 26.6953000, "purchaseRateNB": 26.6953000, "saleRate": 26.8500000, "purchaseRate": 26.4500000 }
-];
 
 const infoMap = new Map([
   ['EUR', 'евро'],
@@ -25,16 +16,16 @@ const infoMap = new Map([
   ['GBP', 'британский фунт'],
   ['PLZ', 'польский злотый'],
   ['RUB', 'российский рубль'],
-  ['USD', 'доллар США']
+  ['USD', 'доллар США'],
+  ['UAH', 'гривна']
 ]);
 
 const pictureLinks = [
-  { id: 1, link: "https://www.geont.ru/assets/cache/images/images/sliders/costa_rica/costa_rica10-800x300-d02.jpg" },
-  { id: 2, link: "https://iveron.ru/wp-content/uploads/2019/03/2-800x300.jpg" },
-  { id: 3, link: "https://ladolcevita.com.ua/wp-content/uploads/2020/04/zamki-iz-Kharkova-800x300.jpg" },
-  { id: 4, link: "https://www.geont.ru/assets/cache/images/images/sliders/costa_rica/costa_rica9-800x300-c71.jpg" }
+  { id: 1, link: "https://picsum.photos/800/300" },
+  { id: 2, link: "https://picsum.photos/801/301" },
+  { id: 3, link: "https://picsum.photos/802/302" },
+  { id: 4, link: "https://picsum.photos/803/303" }
 ];
-
 
 function LoadBody(props) {
   return (
@@ -50,14 +41,65 @@ function LoadBody(props) {
   );
 }
 
-function App(props) {
-  return (
-    <div className="App">
-      <Header />
-      <LoadBody data={data} infoMap={infoMap} pictureLinks={pictureLinks} />
-      <Footer />
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    }
+  }
+
+  // getData(date) {
+  //   let result;
+  //   axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + date)
+  //     .then(res => {result = res.data.exchangeRate})
+  //     .catch(error => alert('Something went wrong ' + error));
+  //   return result;
+  // }
+
+  // componentDidMount() {
+  //   const date = new Date();
+  //   let paramDate = `${date.getDate()}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
+  //   let responseData = this.getData(paramDate);
+  //   console.log(responseData);
+
+  //   // if (responseData == null) {
+  //   if (responseData === undefined) {
+  //     paramDate = `${date.getDate() - 1}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
+  //     console.log(paramDate);
+  //     responseData = this.getData(paramDate);
+  //     console.log(responseData);
+
+  //   }
+  //   responseData.shift();
+  //   const correctData = responseData.filter(item => item.saleRate != null || item.currency === 'UAH');
+  //   this.setState({ data: correctData });
+  // }
+
+  componentDidMount() {
+    const date = new Date();
+    const paramDate = `${date.getDate()}.${(date.getMonth() + 1)}.${date.getFullYear()}`;
+    axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + paramDate)
+    // axios.get('https://api.privatbank.ua/p24api/exchange_rates?json&date=09.06.2020')
+        .then(res => {
+          const responseData = res.data.exchangeRate;
+          responseData.shift();
+          const correctData = responseData.filter(item => item.saleRate != null || item.currency === 'UAH');
+          this.setState({data : correctData});
+        })
+        .catch(error => alert('Something went wrong ' + error));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <LoadBody data={this.state.data} infoMap={infoMap} pictureLinks={pictureLinks} />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

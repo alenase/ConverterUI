@@ -3,11 +3,11 @@ import '../App.css';
 
 
 function TextForAboutAPI() {
-    return (
-      <div >
+  return (
+    <div >
 
-      </div>
-    );
-  }
-  
-  export default TextForAboutAPI;
+    </div>
+  );
+}
+
+export default TextForAboutAPI;
